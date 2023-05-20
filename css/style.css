@@ -1,0 +1,394 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    border: none;
+    text-transform: capitalize;
+    /* transition: .2s linear; */
+}
+
+:root {
+    --bleu: rgb(0, 115, 255);
+    --grey: #aaa;
+    --black: rgb(14, 13, 13);
+    --border: 1px solid var(--bleu);
+    --shadow: 0px 0px 15px rgba(0, 0, 0, 0.074);
+    --transition: .2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 9rem;
+}
+
+main {
+    position: relative;
+    height: 100vh;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    background-color: var(--bleu);
+    transition: var(--transition);
+    box-sizing: initial;
+    overflow: hidden;
+    border-left: 5px solid var(--bleu);
+}
+
+.navbar.open {
+    width: 70px;
+}
+
+.navbar ul {
+    position: relative;
+    width: 100%;
+}
+
+.navbar ul li {
+    position: relative;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    display: block;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navbar ul li:first-child {
+    margin-bottom: 6rem;
+    margin-top: 1rem;
+    pointer-events: none;
+}
+
+.navbar li:hover,
+.navbar li.hovered {
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar li:hover a,
+.navbar li.hovered a {
+    color: var(--black);
+}
+
+.navbar li:hover::before,
+.navbar li.hovered::before {
+    content: '';
+    position: absolute;
+    top: -50Px;
+    width: 50px;
+    height: 50Px;
+    right: 0;
+    border-radius: 50%;
+    box-shadow: 20px 20Px 10px 0px rgb(255, 255, 255);
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.navbar li:hover::after,
+.navbar li.hovered::after {
+    content: '';
+    position: absolute;
+    bottom: -50Px;
+    width: 50px;
+    height: 50Px;
+    right: 0;
+    border-radius: 50%;
+    box-shadow: 20px -20Px 10px 0px rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.navbar li a {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 1.7rem;
+    width: 100%;
+}
+
+.navbar li a .icon {
+    width: 60px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.navbar li a .text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding-left: 3.7rem;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    width: calc(100% - 300Px);
+    left: 300px;
+    padding: 1rem 2rem;
+}
+
+.content.open {
+    width: calc(100% - 70px);
+    left: 70px;
+}
+
+.content .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .topbar i.fa-bars {
+    font-size: 2.3rem;
+    color: var(--black);
+    cursor: pointer;
+}
+
+.content .topbar .search {
+    width: 60%;
+    height: 40px;
+    position: relative;
+}
+
+.content .topbar .search input {
+    width: 100%;
+    height: 100%;
+    padding-left: 3.5rem;
+    border-radius: 30px;
+    border: 1px solid var(--grey);
+}
+
+.content .topbar .search label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.content .topbar .search label:hover {
+    color: var(--bleu);
+}
+
+.content .topbar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.content .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1Fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.content .cards .card {
+    box-shadow: var(--shadow);
+    border-radius: 1rem;
+    padding: 3rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.cards .card .number {
+    font-size: 3rem;
+    color: var(--bleu);
+}
+
+.cards .card .number span {
+    color: var(--grey);
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 5px;
+}
+
+.cards .card i {
+    font-size: 3.5rem;
+    color: var(--grey);
+}
+
+.cards .card:hover {
+    background-color: var(--bleu);
+    cursor: pointer;
+}
+
+.cards .card:hover i,
+.cards .card:hover .number,
+.card:hover .number span {
+    color: white;
+}
+
+
+/* ******************************************************* */
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.orders {
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.customers {
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow);
+    padding: 1.5rem 2rem 0;
+}
+
+.container h3 {
+    font-size: 2.2rem;
+    color: var(--bleu);
+    margin-bottom: 1.5rem;
+}
+
+.Customer {
+    display: flex;
+    margin-bottom: 0.5rem;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Customer:hover {
+    background-color: var(--bleu);
+}
+
+.Customer:hover h5,
+.Customer:hover h5 span {
+    color: white;
+}
+
+.Customer img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.Customer h5 {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin-left: 1rem;
+}
+
+.Customer h5 span {
+    color: var(--grey);
+    font-size: 1.1rem;
+    margin-top: 5px;
+    font-weight: 100;
+    display: block;
+}
+
+.orders {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+}
+
+.orders .top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.orders .top a {
+    font-size: 1.2rem;
+    background-color: var(--bleu);
+    padding: 7px 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.orders table {
+    width: 100%;
+    height: 90%;
+    border-collapse: collapse;
+}
+
+.orders table thead tr td {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.orders table tr:not(:last-child) {
+    color: var(--black);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.079);
+}
+
+.orders table tbody tr:hover {
+    background-color: var(--bleu);
+    color: white;
+    transition: .3S ease;
+}
+
+.orders table tr td {
+    padding: 10px;
+}
+
+.orders table tr td:nth-child(3) {
+    text-align: center;
+}
+
+.orders table tr td:last-child,
+.orders table tr td:nth-child(2) {
+    text-align: end;
+}
+
+.orders table tr td a {
+    padding: 3px;
+    border-radius: 3px;
+    color: white;
+}
+
+.orders table tr td .deliv {
+    background-color: greenyellow;
+}
+
+.orders table tr td .pend {
+    background-color: rgb(238, 172, 49);
+}
+
+.orders table tr td .prog {
+    background-color: rgb(0, 140, 255);
+}
+
+.orders table tr td .retu {
+    background-color: red;
+}
+
+@media (max-width:990px) {
+    .navbar {
+        left: -305Px;
+    }
+    .navbar.open {
+        left: 0;
+        width: 300px;
+    }
+    main .content {
+        width: 100%;
+        left: 0;
+    }
+    main .content.open {
+        left: 300Px;
+    }
+}
+
+@media (max-width:767px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
